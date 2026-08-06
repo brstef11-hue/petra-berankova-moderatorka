@@ -86,7 +86,7 @@ nav.scrolled{border-bottom-color:var(--line)}
 .hero-btns{display:flex;gap:13px;flex-wrap:wrap;margin-top:38px}
 
 /* waveform */
-.wave{display:flex;align-items:center;gap:4px;height:72px;margin-top:56px}
+.wave{display:flex;align-items:center;gap:4px;height:72px;margin-top:56px;min-width:0;overflow:hidden}
 .wave span{width:5px;border-radius:5px;background:var(--ink);transform-origin:center;animation:eq 1.2s ease-in-out infinite}
 .wave span.ac{background:var(--accent)}
 @keyframes eq{0%,100%{transform:scaleY(.28)}50%{transform:scaleY(1)}}
@@ -204,11 +204,11 @@ footer{max-width:1200px;margin:0 auto;padding:30px 40px 40px;border-top:1px soli
   .hero-inner{grid-template-columns:1fr;gap:22px}
   .hero-left{display:contents}
   .hero-left h1{order:1;margin-bottom:2px}
-  .hero-photo{order:2;width:100%;max-width:none;margin:0}
-  .hero-photo img{aspect-ratio:4/5;object-position:50% 18%}
+  .hero-photo{order:2;width:100%;max-width:none;min-width:0;margin:0}
+  .hero-photo img{aspect-ratio:4/5;object-position:50% 18%;min-width:0}
   .hero-sub{order:3;margin-top:0}
   .hero-btns{order:4;margin-top:4px}
-  #wave{order:5;margin-top:6px}
+  #wave{order:5;margin-top:6px;min-width:0}
   .sec{padding:60px 20px}
   .about-grid{grid-template-columns:1fr;gap:34px}
   .photo{order:-1;max-width:340px}
@@ -241,7 +241,7 @@ footer{max-width:1200px;margin:0 auto;padding:30px 40px 40px;border-top:1px soli
 <header class="hero">
   <div class="hero-inner">
     <div class="hero-left">
-      <h1>Zbavím Vás<br><em>trémy</em> z vystupování<span class="end-dot">.</span></h1>
+      <h1>Zbavím Vás<br><em>trémy</em> z&nbsp;vystupování<span class="end-dot">.</span></h1>
       <p class="hero-sub">Jsem Petra, moderátorka s 29 lety v rádiu, televizi i na pódiu. Provázím konference a společenské akce a učím lidi mluvit sebejistě, srozumitelně a s vlastním hlasem.</p>
       <div class="hero-btns">
         <a href="#kontakt" class="btn btn-ghost">Poptat moderování</a>
