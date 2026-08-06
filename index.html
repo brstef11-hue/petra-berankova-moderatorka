@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Petra Beránková — Moderátorka & lektorka mluvení</title>
+<style>
+/* Apfel Grotezk — Luigi Gorlero / Collletttivo, SIL OFL 1.1 */
+@font-face{font-family:'Apfel Grotezk';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/ApfelGrotezk-Regular.woff2') format('woff2');}
+@font-face{font-family:'Apfel Grotezk';font-style:normal;font-weight:500;font-display:swap;src:url('fonts/ApfelGrotezk-Mittel.woff2') format('woff2');}
+@font-face{font-family:'Apfel Grotezk';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/ApfelGrotezk-Fett.woff2') format('woff2');}
+@font-face{font-family:'Apfel Grotezk';font-style:normal;font-weight:800;font-display:swap;src:url('fonts/ApfelGrotezk-Satt.woff2') format('woff2');}
+
+:root{
+  --bg:      #faf1f5;
+  --paper:   #ffffff;
+  --ink:     #141620;
+  --ink2:    #3a3d4a;
+  --muted:   #71747f;
+  --line:    #f1e2e9;
+  --accent:  #2b3ff5;
+  --accent-d:#1e2ed1;
+  --accent-soft:#eaecff;
+  --disp:'Apfel Grotezk','Segoe UI',sans-serif;
+  --sans:'Apfel Grotezk',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:#fff;color:var(--ink);
+  font-family:var(--sans);font-size:17px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+::selection{background:var(--accent);color:#fff}
+
+.disp{font-family:var(--disp);font-weight:800;letter-spacing:-.03em;line-height:.96;text-wrap:balance}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:'';width:22px;height:1.5px;background:var(--accent)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:11px;font-size:15px;font-weight:600;font-family:var(--sans);cursor:pointer;border:none;transition:all .22s var(--ease)}
+.btn svg{width:16px;height:16px}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-d);transform:translateY(-2px);box-shadow:0 14px 30px rgba(43,63,245,.28)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+.btn-white{background:#fff;color:var(--accent)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.18)}
+.btn-wghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45)}
+.btn-wghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+
+/* reveal */
+.r{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.r.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}.d4{transition-delay:.28s}
+@media(prefers-reduced-motion:reduce){.r{transition:none;opacity:1;transform:none}}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;
+  padding:18px 40px;background:rgba(255,255,255,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .3s}
+nav.scrolled{border-bottom-color:var(--line)}
+.nav-name{font-family:var(--disp);font-weight:700;font-size:19px;letter-spacing:-.02em}
+.nav-name b{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-size:15px;font-weight:500;color:var(--ink2);transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-links .btn{padding:10px 18px;font-size:14px}
+.nav-links a.btn-primary{color:#fff}
+.burger{display:none;background:none;border:none;cursor:pointer;font-size:24px;color:var(--ink)}
+
+/* ── HERO ── */
+.hero{max-width:1200px;margin:0 auto;padding:150px 40px 74px}
+.hero-inner{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(32px,5vw,72px);align-items:center}
+.hero-photo{position:relative}
+.hero-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%;border-radius:22px;box-shadow:0 30px 70px rgba(20,22,32,.16)}
+.hero-photo::before{content:'';position:absolute;inset:0;border-radius:22px;box-shadow:inset 0 0 0 1px rgba(20,22,32,.06);pointer-events:none;z-index:1}
+.hero-live{display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border-radius:999px;background:var(--accent-soft);color:var(--accent-d);font-size:12.5px;font-weight:600;letter-spacing:.04em;margin-bottom:30px}
+.hero-live .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(43,63,245,.45)}70%{box-shadow:0 0 0 7px rgba(43,63,245,0)}}
+.hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(46px,6.4vw,100px);line-height:.94;letter-spacing:-.035em;max-width:12ch;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero h1 .end-dot{color:var(--accent)}
+.hero-sub{font-size:clamp(18px,2vw,22px);color:var(--ink2);max-width:560px;margin-top:28px;line-height:1.5}
+.hero-btns{display:flex;gap:13px;flex-wrap:wrap;margin-top:38px}
+
+/* waveform */
+.wave{display:flex;align-items:center;gap:4px;height:72px;margin-top:56px}
+.wave span{width:5px;border-radius:5px;background:var(--ink);transform-origin:center;animation:eq 1.2s ease-in-out infinite}
+.wave span.ac{background:var(--accent)}
+@keyframes eq{0%,100%{transform:scaleY(.28)}50%{transform:scaleY(1)}}
+@media(prefers-reduced-motion:reduce){.wave span{animation:none}}
+
+
+/* ── SECTION BASE ── */
+.sec{max-width:1200px;margin:0 auto;padding:clamp(54px,6vw,84px) 40px;position:relative}
+.sec.lav::before{content:'';position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:100vw;background:var(--bg);z-index:-1}
+.sec-head{max-width:640px}
+.sec-h{font-family:var(--disp);font-weight:800;font-size:clamp(34px,4.6vw,58px);letter-spacing:-.03em;line-height:1;margin-top:18px}
+.sec-h em{font-style:normal;color:var(--accent)}
+.sec-sub{font-size:18px;color:var(--ink2);margin-top:18px;line-height:1.55}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr .82fr;gap:clamp(36px,5vw,72px);align-items:center;margin-top:10px}
+.about-body .eyebrow{margin-bottom:0}
+.about-body p{font-size:18px;color:var(--ink2);margin-top:20px;line-height:1.7;max-width:52ch}
+.about-body p strong{color:var(--ink);font-weight:600}
+/* photo slot */
+.photo{position:relative;aspect-ratio:4/5;border-radius:18px;background:#eef0f6;border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;overflow:hidden}
+.photo::after{content:'';position:absolute;inset:0;background:radial-gradient(120% 90% at 100% 0%,rgba(43,63,245,.06),transparent 60%)}
+.photo svg{width:46px;height:46px;color:var(--muted);opacity:.7}
+.photo span{font-size:13px;color:var(--muted);letter-spacing:.02em;z-index:1}
+.photo .tag{position:absolute;top:14px;left:14px;z-index:2;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:#fff;border:1px solid var(--line);padding:5px 11px;border-radius:999px}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 16%}
+
+/* ── SERVICES ── */
+.services{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.mod-photo img{object-position:50% 22%}
+.mod-logos{margin-top:34px}
+.mod-logos-lbl{font-size:14.5px;font-weight:400;color:var(--ink2);line-height:1.6;margin-bottom:18px}
+.mod-logos-row{display:grid;grid-template-columns:repeat(5,1fr);gap:22px 20px}
+.mod-logos-row img{width:100%;height:32px;object-fit:contain;opacity:.9;transition:opacity .25s,transform .25s}
+.mod-logos-row img:hover{opacity:1;transform:translateY(-2px)}
+
+/* ── COURSES ── */
+.course-list{margin-top:48px;border-top:1px solid var(--line)}
+.course-row{display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center;padding:28px 4px;border-bottom:1px solid var(--line);transition:padding-left .28s var(--ease)}
+.course-row:hover{padding-left:16px}
+.course-mid h4{font-family:var(--disp);font-weight:700;font-size:clamp(22px,2.4vw,30px);letter-spacing:-.02em;margin-bottom:6px}
+.course-mid p{font-size:15px;color:var(--muted);line-height:1.55;max-width:56ch}
+.course-meta{text-align:right;white-space:nowrap;font-size:14px;font-weight:600;color:var(--ink)}
+.course-meta span{display:block;font-weight:400;font-size:12.5px;color:var(--muted);margin-top:4px}
+/* ── KURZY ── */
+.kurzy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px;align-items:start}
+.kformat{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s var(--ease)}
+.kformat:hover{transform:translateY(-4px);border-color:#c9cce0}
+.kformat.featured{border:1.5px solid var(--accent);box-shadow:0 22px 50px rgba(43,63,245,.10)}
+.kformat.featured:hover{border-color:var(--accent)}
+.khead{all:unset;box-sizing:border-box;display:block;width:100%;cursor:pointer;padding:28px 28px 24px}
+.kbadge{flex-shrink:0;display:inline-block;background:var(--accent);color:#fff;font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.ktop{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ktop-left{display:flex;align-items:center;gap:10px;min-width:0}
+.kformat h3{font-family:var(--disp);font-weight:700;font-size:22px;letter-spacing:-.02em;color:var(--ink);min-width:0}
+.kchev{flex-shrink:0;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;color:var(--muted);transition:transform .35s var(--ease),background .25s,border-color .25s,color .25s}
+.kchev svg{width:11px;height:11px}
+.kformat.open .kchev{transform:rotate(180deg);background:var(--accent);border-color:var(--accent);color:#fff}
+@media(hover:hover) and (pointer:fine){
+  .kformat:hover .kchev{border-color:var(--accent);color:var(--accent)}
+  .kformat.open:hover .kchev{color:#fff}
+}
+.kteaser{font-size:14.5px;color:var(--ink2);line-height:1.6;margin-top:10px}
+.kbody{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
+.kbody-inner{overflow:hidden}
+.kbody-pad{padding:0 28px 28px}
+.kformat.open .kbody{grid-template-rows:1fr}
+@media(hover:hover) and (pointer:fine){
+  .kformat:hover .kbody{grid-template-rows:1fr}
+}
+.kdivider{height:1px;background:var(--line);margin-bottom:18px}
+.kprice{font-family:var(--disp);font-weight:800;font-size:24px;letter-spacing:-.02em;color:var(--accent);line-height:1;margin-bottom:18px}
+.kprice small{display:block;font-family:var(--sans);font-weight:400;font-size:12px;color:var(--muted);margin-top:6px;letter-spacing:0}
+.kmeta,.kformat .klist{list-style:none;display:flex;flex-direction:column;gap:10px}
+.kmeta li{font-size:14px;color:var(--ink2);display:flex;gap:10px;line-height:1.5}
+.kmeta li::before{content:'';flex-shrink:0;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:7px}
+.kformat .klist li{font-size:14px;color:var(--ink2);display:flex;gap:10px;line-height:1.45}
+.kformat .klist li svg{flex-shrink:0;width:18px;height:18px;color:var(--accent);margin-top:1px}
+.knote{margin-top:16px;font-size:14px;color:var(--ink2);line-height:1.55}
+
+/* ── TESTIMONIALS ── */
+.testi{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.testi-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:0;gap:16px;margin-top:52px;padding-bottom:10px;scrollbar-width:none}
+.testi-grid::-webkit-scrollbar{display:none}
+.testi-card{flex:0 0 340px;scroll-snap-align:start;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:30px 28px;display:flex;flex-direction:column}
+.testi-stars{color:var(--accent);font-size:14px;letter-spacing:3px;margin-bottom:16px}
+.testi-card blockquote{font-size:17.5px;line-height:1.5;color:var(--ink);font-weight:500;margin-bottom:22px;flex:1}
+.testi-who{display:flex;align-items:center;gap:12px}
+.testi-av{width:44px;height:44px;border-radius:50%;background:var(--accent-soft);color:var(--accent-d);display:grid;place-items:center;font-family:var(--disp);font-weight:700;font-size:16px;flex-shrink:0;overflow:hidden}
+.testi-av img{width:100%;height:100%;object-fit:cover;display:block}
+.testi-av.logo{background:#fff;border:1px solid var(--line);border-radius:10px;width:88px;height:44px;padding:6px 8px;flex-shrink:0}
+.testi-av.logo img{width:100%;height:100%;object-fit:contain}
+.testi-name{font-weight:600;font-size:14.5px}
+.testi-role{font-size:13px;color:var(--muted)}
+
+/* ── CONTACT ── */
+.contact-photo2 img{object-position:50% 12%}
+.contact-body .wave{margin:34px 0 0}
+.contact-btns{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+.contact-social{display:flex;gap:12px;margin-top:26px}
+.contact-social a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--paper);border:1px solid var(--line);color:var(--ink2);transition:background .2s,color .2s,border-color .2s,transform .2s}
+.contact-social a:hover{background:var(--accent);border-color:var(--accent);color:#fff;transform:translateY(-2px)}
+.contact-social svg{width:19px;height:19px}
+
+/* ── FOOTER ── */
+footer{max-width:1200px;margin:0 auto;padding:30px 40px 40px;border-top:1px solid var(--line);text-align:center}
+.foot-copy{font-size:13px;color:var(--muted)}
+
+@media(max-width:860px){
+  .mod-logos-row{grid-template-columns:repeat(3,1fr)}
+  nav{padding:14px 20px}
+  .nav-links{display:none}
+  .burger{display:block}
+  .hero{padding:106px 20px 52px}
+  .hero-inner{grid-template-columns:1fr;gap:22px}
+  .hero-left{display:contents}
+  .hero-left h1{order:1;margin-bottom:2px}
+  .hero-photo{order:2;width:100%;max-width:none;margin:0}
+  .hero-photo img{aspect-ratio:4/5;object-position:50% 18%}
+  .hero-sub{order:3;margin-top:0}
+  .hero-btns{order:4;margin-top:4px}
+  #wave{order:5;margin-top:6px}
+  .sec{padding:60px 20px}
+  .about-grid{grid-template-columns:1fr;gap:34px}
+  .photo{order:-1;max-width:340px}
+  .kurzy-grid,.testi-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:20px;gap:14px;margin-left:-20px;margin-right:-20px;padding:4px 20px 18px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .kurzy-grid::-webkit-scrollbar,.testi-grid::-webkit-scrollbar{display:none}
+  .kformat,.testi-card{scroll-snap-align:start;flex:0 0 min(84%,360px)}
+  .course-row{grid-template-columns:1fr;gap:8px}
+  .course-meta{text-align:left}
+  .contact-grid{grid-template-columns:1fr;gap:22px}
+  .contact-panel{padding:28px 22px}
+  footer{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-name">Petra Beránková<b>.</b></div>
+  <div class="nav-links">
+    <a href="#o-mne">O mně</a>
+    <a href="#moderovani">Moderování</a>
+    <a href="#kurzy">Kurzy</a>
+    <a href="#reference">Reference</a>
+    <a href="#kontakt" class="btn btn-primary">Napište mi</a>
+  </div>
+  <button class="burger" aria-label="Menu">☰</button>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <h1>Zbavím Vás<br><em>trémy</em> z vystupování<span class="end-dot">.</span></h1>
+      <p class="hero-sub">Jsem Petra, moderátorka s 29 lety v rádiu, televizi i na pódiu. Provázím konference a společenské akce a učím lidi mluvit sebejistě, srozumitelně a s vlastním hlasem.</p>
+      <div class="hero-btns">
+        <a href="#kontakt" class="btn btn-ghost">Poptat moderování</a>
+        <a href="#kurzy" class="btn btn-ghost">Kurzy mluvení</a>
+      </div>
+      <div class="wave" id="wave" aria-hidden="true"></div>
+    </div>
+    <div class="hero-photo">
+      <img src="fotky/petra-hero.jpg" alt="Petra Beránková — moderátorka a lektorka mluvení"/>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="sec lav" id="o-mne">
+  <div class="about-grid">
+    <div class="about-body">
+      <span class="eyebrow r">O mně</span>
+      <h2 class="sec-h r d1">Za mikrofonem od <em>rádia</em> po televizi</h2>
+      <p class="r d2">Mikrofonu se věnuji <strong>29 let</strong>. Působila jsem v <strong>TV Prima</strong>, podílela se na pořadech i zpravodajství <strong>České televize a ČT24</strong> a dnes moderuji v <strong>Českém rozhlasu</strong>, a k tomu nespočet akcí na pódiu.</p>
+      <p class="r d2">Roky za mikrofonem mě naučily, že mluvit srozumitelně a bez trémy se dá naučit. Proto dnes vedu i kurzy mluvení, vždy ušité na míru konkrétnímu člověku i firmě.</p>
+      <p class="r d3">Vím, že mluvení na veřejnosti u Vás může vzbuzovat obavy. Ale také vím, že vystupování a mluvení je <strong>řemeslo, které se dá naučit</strong>, a ráda Vás jím provedu.</p>
+    </div>
+    <div class="photo r d2">
+      <img src="fotky/petra-about.jpg" alt="Petra Beránková"/>
+    </div>
+  </div>
+</section>
+
+<!-- MODEROVÁNÍ -->
+<section class="sec" id="moderovani">
+  <div class="about-grid">
+    <div class="about-body mod-body">
+      <span class="eyebrow r">Moderování</span>
+      <h2 class="sec-h r d1">Provedu Vaši akci</h2>
+      <p class="r d2">Moderuji konference a panelové diskuze, galavečery a předávání cen, firemní akce i společenské večery. Postarám se, aby program plynul a hosté se dobře bavili.</p>
+      <p class="r d2">Každou akci ladím individuálně podle Vašeho programu, tématu a publika. Termín i podobu domluvíme osobně.</p>
+      <div class="mod-logos r d3">
+        <div class="mod-logos-lbl">Moderovala jsem například pro</div>
+        <div class="mod-logos-row">
+          <img src="fotky/logo-ppink.png" alt="P-PINK"/>
+          <img src="fotky/khk-logo.png" alt="Krajská hospodářská komora Pardubického kraje"/>
+          <img src="fotky/logo-foxconn.jpg" alt="Foxconn"/>
+          <img src="fotky/logo-cityzen.svg" alt="CityZen"/>
+          <img src="fotky/logo-heli-eulift.svg" alt="HELI EULIFT"/>
+          <img src="fotky/logo-2vv.svg" alt="2VV"/>
+          <img src="fotky/logo-montaze-broz.svg" alt="Montáže Brož"/>
+          <img src="fotky/logo-cpp.png" alt="ČPP — Vienna Insurance Group"/>
+          <img src="fotky/logo-csob.svg" alt="ČSOB"/>
+        </div>
+      </div>
+    </div>
+    <div class="photo mod-photo r d2">
+      <img src="fotky/petra-mod-b.jpg" alt="Petra Beránková při moderování konference"/>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="sec lav" id="kurzy">
+  <div class="sec-head">
+    <span class="eyebrow r">Kurzy mluvení</span>
+    <h2 class="sec-h r d1">Naučte se mluvit <em>bez trémy</em></h2>
+    <p class="sec-sub r d2">Každá lekce je ušitá přesně na míru, Vám i Vaší firmě. Společně se zbavíme trémy i slovní vaty, doladíme intonaci a artikulaci a zapracujeme na gestech, řeči těla i postoji. Výsledek je slyšet i vidět už po pár hodinách.</p>
+  </div>
+
+  <div class="kurzy-grid">
+    <div class="kformat r d1">
+      <button class="khead" aria-expanded="false">
+        <div class="ktop">
+          <div class="ktop-left"><h3>Jednotlivá lekce</h3></div>
+          <span class="kchev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </div>
+        <p class="kteaser">Soukromá hodina 1:1 ušitá přesně Vám, ideální na vyzkoušení nebo doladění konkrétní věci.</p>
+      </button>
+      <div class="kbody"><div class="kbody-inner"><div class="kbody-pad">
+        <div class="kdivider"></div>
+        <div class="kprice">2 000 Kč<small>za 60 minut</small></div>
+        <ul class="kmeta">
+          <li>U Vás ve firmě, u mě, v rozhlase i online</li>
+          <li>Pravidelně 1× týdně, operativně, nebo intenzivně</li>
+          <li>Nahrávky cvičení a dobrovolná domácí cvičení</li>
+          <li>Platba QR kódem den před lekcí</li>
+        </ul>
+      </div></div></div>
+    </div>
+
+    <div class="kformat featured r d2">
+      <button class="khead" aria-expanded="false">
+        <div class="ktop">
+          <div class="ktop-left"><span class="kbadge">Doporučuji</span><h3>Kurz 10 lekcí</h3></div>
+          <span class="kchev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </div>
+        <p class="kteaser">Ucelený kurz, kde je progres opravdu vidět, deset lekcí ušitých na míru Vašim potřebám.</p>
+      </button>
+      <div class="kbody"><div class="kbody-inner"><div class="kbody-pad">
+        <div class="kdivider"></div>
+        <div class="kprice">20 000 Kč<small>10 lekcí + 1 zdarma</small></div>
+        <ul class="klist">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg>Práci s hlasem: cvičení, rozmluvadla, barva a intonace</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg>Práci s dechem a vnímání vlastního hlasu</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg>Gesta a řeč těla při moderaci i prezentaci</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg>Zkušební rozhovory</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg>Práci s textem a čtení</li>
+        </ul>
+        <p class="knote">Platíte předem za celý kurz, lze fakturovat na firmu.</p>
+      </div></div></div>
+    </div>
+
+    <div class="kformat r d3">
+      <button class="khead" aria-expanded="false">
+        <div class="ktop">
+          <div class="ktop-left"><h3>Firemní školení</h3></div>
+          <span class="kchev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </div>
+        <p class="kteaser">Skupinové školení mluvení přímo ve Vaší firmě, ušité na míru zadání i tématu Vašeho týmu.</p>
+      </button>
+      <div class="kbody"><div class="kbody-inner"><div class="kbody-pad">
+        <div class="kdivider"></div>
+        <div class="kprice">od 15 000 Kč<small>skupina 10–15 lidí</small></div>
+        <ul class="kmeta">
+          <li>3–5 hodin v jednom bloku</li>
+          <li>Skupina zhruba 10–15 zaměstnanců</li>
+          <li>Cena podle počtu lidí nebo dohodou</li>
+        </ul>
+        <p class="knote">Školila jsem např. ve firmách Everythink, Montáže Brož, VAK, Pardubický KÚ, RRAP nebo Medfima.</p>
+      </div></div></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi">
+  <div class="sec" id="reference">
+    <div class="sec-head">
+      <span class="eyebrow r">Reference</span>
+      <h2 class="sec-h r d1">Co říkají klienti</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card r d1">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>Jedna z nejlepších investic do sebe. Kurz byl maximálně praktický, díky Petřiným zkušenostem z moderování a prezentací měla ke každému tématu co říct z praxe. Doporučuji každému, kdo chce zapracovat na svém projevu.</blockquote>
+        <div class="testi-who"><div class="testi-av"><img src="fotky/jan-sprinar.jpg" alt="Jan Špriňar"/></div><div><div class="testi-name">Jan Špriňar</div><div class="testi-role">Head of Customer Development, MobileSoft</div></div></div>
+      </div>
+      <div class="testi-card r d2">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>Spolupráce s Petrou je pro nás vždy zárukou profesionálního průběhu. Odborné konference i společenská setkání moderuje s lehkostí a elegancí, pohotově reaguje a každé akci dodá energii i přirozený spád. Těšíme se na další spolupráci.</blockquote>
+        <div class="testi-who"><div class="testi-av logo"><img src="fotky/khk-logo.png" alt="Krajská hospodářská komora Pardubického kraje"/></div><div><div class="testi-name">Eva Malinová</div><div class="testi-role">Krajská hospodářská komora Pardubického kraje</div></div></div>
+      </div>
+      <div class="testi-card r d1">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>Petra moderuje showference P-PINK, největší byznys event v Pardubickém kraji, už několik ročníků po sobě. Skvělý výkon a maximálně profesionální domluva pokaždé, přesně na co se můžeme spolehnout.</blockquote>
+        <div class="testi-who"><div class="testi-av"><img src="fotky/jiri-janku.jpg" alt="Jiří Janků"/></div><div><div class="testi-name">Jiří Janků</div><div class="testi-role">P-PINK, Pardubický podnikatelský inkubátor</div></div></div>
+      </div>
+      <div class="testi-card r d2">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>Po skvělé zkušenosti s moderací Grand Opening Day 2025 jsme Petru oslovili znovu, tentokrát jako lektorku kurzu rétoriky pro naše interní trenéry a náboráře. Kurz byl prakticky zaměřený, plný konkrétních příkladů a tipů pro sebejisté vystupování.</blockquote>
+        <div class="testi-who"><div class="testi-av"><img src="fotky/lucie-kovarova.jpg" alt="Lucie Kovářová"/></div><div><div class="testi-name">Lucie Kovářová</div><div class="testi-role">Marketing Specialist, Montáže Brož</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec lav" id="kontakt">
+  <div class="about-grid">
+    <div class="about-body contact-body">
+      <span class="eyebrow r">Kontakt</span>
+      <h2 class="sec-h r d1">Dejte Vaší akci i sobě <em>hlas</em>, který si lidé zapamatují.</h2>
+      <p class="r d2">Plánujete konferenci, hledáte lektorku na firemní kurz, nebo se chcete zlepšit v projevu? Napište mi, ozvu se obvykle do jednoho dne.</p>
+      <div class="contact-btns r d2">
+        <a href="mailto:petra.berankova@rozhlas.cz" class="btn btn-primary">petra.berankova@rozhlas.cz</a>
+        <a href="tel:+420777073096" class="btn btn-ghost">+420 777 073 096</a>
+      </div>
+      <div class="wave r d3" id="wave2" aria-hidden="true"></div>
+      <div class="contact-social">
+        <a href="https://www.linkedin.com/in/petra-beránková-21b017283/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.02 8.5h4.96V24H.02V8.5zM8.98 8.5h4.75v2.11h.07c.66-1.25 2.27-2.57 4.68-2.57 5 0 5.92 3.29 5.92 7.57V24h-4.96v-6.9c0-1.64-.03-3.75-2.29-3.75-2.29 0-2.64 1.79-2.64 3.63V24H8.98V8.5z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/petra.berankova.522" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/berankova.p/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="photo contact-photo2">
+      <img src="fotky/petra-contact.jpg" alt="Petra Beránková"/>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-copy">© 2026 Petra Beránková · Moderátorka &amp; lektorka mluvení</div>
+</footer>
+
+<script>
+// waveform bars
+function buildWave(el,count){
+  if(!el)return;
+  for(let i=0;i<count;i++){
+    const s=document.createElement('span');
+    const base=0.3+Math.abs(Math.sin(i*0.5))*0.7;      // deterministic pattern
+    s.style.height=(18+base*46)+'px';
+    s.style.animationDelay=(-i*0.08)+'s';
+    s.style.animationDuration=(1+((i%5)*0.12))+'s';
+    if(i%4===0)s.classList.add('ac');
+    el.appendChild(s);
+  }
+}
+buildWave(document.getElementById('wave'),48);
+buildWave(document.getElementById('wave2'),34);
+
+// reveal
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.r').forEach(el=>io.observe(el));
+
+// nav border on scroll
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10));
+
+document.querySelector('.burger').addEventListener('click',()=>document.querySelector('#kontakt').scrollIntoView({behavior:'smooth'}));
+
+// expandable course tiles
+document.querySelectorAll('.khead').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const card=btn.closest('.kformat');
+    const open=card.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open?'true':'false');
+  });
+});
+</script>
+</body>
+</html>

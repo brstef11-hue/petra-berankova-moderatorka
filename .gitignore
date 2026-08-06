@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+
+# Claude session files
+.claude/
+
+# Artifact-only build (huge base64 file, not needed for production hosting)
+preview-artifact.html
+
+# Only ship photos/logos actually referenced by index.html —
+# ignore everything else in fotky/ (raw originals, unused duplicates, WIP uploads)
+fotky/*
+!fotky/jan-sprinar.jpg
+!fotky/jiri-janku.jpg
+!fotky/khk-logo.png
+!fotky/logo-2vv.svg
+!fotky/logo-cityzen.svg
+!fotky/logo-cpp.png
+!fotky/logo-csob.svg
+!fotky/logo-foxconn.jpg
+!fotky/logo-heli-eulift.svg
+!fotky/logo-montaze-broz.svg
+!fotky/logo-ppink.png
+!fotky/lucie-kovarova.jpg
+!fotky/petra-about.jpg
+!fotky/petra-contact.jpg
+!fotky/petra-hero.jpg
+!fotky/petra-mod-b.jpg
