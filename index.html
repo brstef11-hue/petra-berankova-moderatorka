@@ -68,7 +68,7 @@ nav.scrolled{border-bottom-color:var(--line)}
 .nav-links a:hover{color:var(--accent)}
 .nav-links .btn{padding:10px 18px;font-size:14px}
 .nav-links a.btn-primary{color:#fff}
-.burger{display:none;background:none;border:none;cursor:pointer;font-size:24px;color:var(--ink)}
+.burger{display:none;background:none;border:none;cursor:pointer;font-size:24px;color:var(--ink);line-height:1}
 
 /* ── HERO ── */
 .hero{max-width:1200px;margin:0 auto;padding:150px 40px 74px}
@@ -198,7 +198,10 @@ footer{max-width:1200px;margin:0 auto;padding:30px 40px 40px;border-top:1px soli
 @media(max-width:860px){
   .mod-logos-row{grid-template-columns:repeat(3,1fr)}
   nav{padding:14px 20px}
-  .nav-links{display:none}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:0 24px 40px rgba(20,22,32,.10);padding:6px 20px 20px}
+  .nav-links.mobile-open{display:flex}
+  .nav-links a{padding:15px 0;border-bottom:1px solid var(--line)}
+  .nav-links a.btn-primary{margin-top:16px;border-bottom:none;justify-content:center}
   .burger{display:block}
   .hero{padding:106px 20px 52px}
   .hero-inner{grid-template-columns:1fr;gap:22px}
@@ -215,6 +218,8 @@ footer{max-width:1200px;margin:0 auto;padding:30px 40px 40px;border-top:1px soli
   .kurzy-grid,.testi-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:20px;gap:14px;margin-left:-20px;margin-right:-20px;padding:4px 20px 18px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .kurzy-grid::-webkit-scrollbar,.testi-grid::-webkit-scrollbar{display:none}
   .kformat,.testi-card{scroll-snap-align:start;flex:0 0 min(84%,360px)}
+  .khead{min-height:206px}
+  .kurzy-grid .r,.testi-grid .r{opacity:1;transform:none;transition:none}
   .course-row{grid-template-columns:1fr;gap:8px}
   .course-meta{text-align:left}
   .contact-grid{grid-template-columns:1fr;gap:22px}
@@ -234,7 +239,7 @@ footer{max-width:1200px;margin:0 auto;padding:30px 40px 40px;border-top:1px soli
     <a href="#reference">Reference</a>
     <a href="#kontakt" class="btn btn-primary">Napište mi</a>
   </div>
-  <button class="burger" aria-label="Menu">☰</button>
+  <button class="burger" aria-label="Menu" aria-expanded="false">☰</button>
 </nav>
 
 <!-- HERO -->
@@ -465,7 +470,20 @@ document.querySelectorAll('.r').forEach(el=>io.observe(el));
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10));
 
-document.querySelector('.burger').addEventListener('click',()=>document.querySelector('#kontakt').scrollIntoView({behavior:'smooth'}));
+// mobile menu
+const burger=document.querySelector('.burger');
+const navLinks=document.querySelector('.nav-links');
+function closeMobileNav(){
+  navLinks.classList.remove('mobile-open');
+  burger.setAttribute('aria-expanded','false');
+  burger.textContent='☰';
+}
+burger.addEventListener('click',()=>{
+  const open=navLinks.classList.toggle('mobile-open');
+  burger.setAttribute('aria-expanded', open?'true':'false');
+  burger.textContent=open?'✕':'☰';
+});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMobileNav));
 
 // expandable course tiles
 document.querySelectorAll('.khead').forEach(btn=>{
