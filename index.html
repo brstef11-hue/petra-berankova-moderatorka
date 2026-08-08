@@ -520,6 +520,17 @@ burger.addEventListener('click',()=>{
 });
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMobileNav));
 
+// in-page anchor links: scroll without leaving a #hash in the URL
+// (a hash in the address bar makes the next reload jump straight to that section)
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const target=document.getElementById(a.getAttribute('href').slice(1));
+    if(!target)return;
+    e.preventDefault();
+    target.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
 // expandable course tiles
 document.querySelectorAll('.khead').forEach(btn=>{
   btn.addEventListener('click',()=>{
