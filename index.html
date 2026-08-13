@@ -182,8 +182,15 @@ nav.scrolled{border-bottom-color:var(--line)}
 
 /* ── TESTIMONIALS ── */
 .testi{background:var(--paper)}
+.testi-wrap{position:relative}
 .testi-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:0;gap:16px;margin-top:52px;padding-bottom:10px;scrollbar-width:none}
 .testi-grid::-webkit-scrollbar{display:none}
+.testi-arrow{position:absolute;top:calc(50% + 21px);transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:0 10px 24px rgba(20,22,32,.14);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;color:var(--ink);transition:background .2s,border-color .2s,color .2s,opacity .2s}
+.testi-arrow:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.testi-arrow svg{width:20px;height:20px}
+.testi-arrow.prev{left:-14px}
+.testi-arrow.next{right:-14px}
+.testi-arrow[disabled]{opacity:0;pointer-events:none}
 .testi-card{flex:0 0 340px;scroll-snap-align:start;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:30px 28px;display:flex;flex-direction:column}
 .testi-stars{color:var(--accent);font-size:14px;letter-spacing:3px;margin-bottom:16px}
 .testi-card blockquote{font-size:17.5px;line-height:1.5;color:var(--ink);font-weight:500;margin-bottom:22px;flex:1}
@@ -238,6 +245,7 @@ footer{max-width:1200px;margin:0 auto;padding:30px 40px 40px;border-top:1px soli
   .kurzy-grid::-webkit-scrollbar,.testi-grid::-webkit-scrollbar{display:none}
   .kformat,.testi-card{scroll-snap-align:start;flex:0 0 min(84%,360px)}
   .kurzy-grid .r,.testi-grid .r{opacity:1;transform:none;transition:none}
+  .testi-arrow{display:none}
   .course-row{grid-template-columns:1fr;gap:8px}
   .course-meta{text-align:left}
   .contact-grid{grid-template-columns:1fr;gap:22px}
@@ -405,6 +413,9 @@ footer{max-width:1200px;margin:0 auto;padding:30px 40px 40px;border-top:1px soli
       <span class="eyebrow r">Reference</span>
       <h2 class="sec-h r d1">Co říkají klienti</h2>
     </div>
+    <div class="testi-wrap">
+    <button class="testi-arrow prev" aria-label="Předchozí reference" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+    <button class="testi-arrow next" aria-label="Další reference"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
     <div class="testi-grid">
       <div class="testi-card r d1">
         <div class="testi-stars">★★★★★</div>
@@ -461,6 +472,7 @@ footer{max-width:1200px;margin:0 auto;padding:30px 40px 40px;border-top:1px soli
         <blockquote>Do&nbsp;kurzu jsem se&nbsp;přihlásila sama od&nbsp;sebe a&nbsp;musím říct, že to byla jedna z&nbsp;nejlepších osobních investic. Oceňuji především to, jak jsou lekce praktické a&nbsp;že se&nbsp;nahrávají, takže se&nbsp;k&nbsp;nim mohu kdykoliv vrátit. Pokud váháte, určitě doporučuji.</blockquote>
         <div class="testi-who"><div class="testi-av"><img src="fotky/petra-lichtenbergova.jpg" alt="Soňa Lichtenbergová"/></div><div><div class="testi-name">Soňa Lichtenbergová</div></div></div>
       </div>
+    </div>
     </div>
   </div>
 </section>
@@ -559,6 +571,27 @@ document.querySelectorAll('.khead').forEach(btn=>{
     btn.setAttribute('aria-expanded', open?'true':'false');
   });
 });
+
+// reference carousel arrows (for mouse users without a touchpad)
+const testiGrid=document.querySelector('.testi-grid');
+const testiPrev=document.querySelector('.testi-arrow.prev');
+const testiNext=document.querySelector('.testi-arrow.next');
+if(testiGrid&&testiPrev&&testiNext){
+  const scrollStep=()=>{
+    const card=testiGrid.querySelector('.testi-card');
+    return card?card.getBoundingClientRect().width+16:360;
+  };
+  testiPrev.addEventListener('click',()=>testiGrid.scrollBy({left:-scrollStep(),behavior:'smooth'}));
+  testiNext.addEventListener('click',()=>testiGrid.scrollBy({left:scrollStep(),behavior:'smooth'}));
+  const updateTestiArrows=()=>{
+    const max=testiGrid.scrollWidth-testiGrid.clientWidth-2;
+    testiPrev.disabled=testiGrid.scrollLeft<=1;
+    testiNext.disabled=testiGrid.scrollLeft>=max;
+  };
+  testiGrid.addEventListener('scroll',updateTestiArrows,{passive:true});
+  window.addEventListener('resize',updateTestiArrows);
+  updateTestiArrows();
+}
 </script>
 </body>
 </html>
