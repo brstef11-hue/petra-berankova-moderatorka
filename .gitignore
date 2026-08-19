@@ -11,6 +11,7 @@ preview-artifact.html
 # ignore everything else in fotky/ (raw originals, unused duplicates, WIP uploads)
 fotky/*
 !fotky/david-krnavek.jpg
+!fotky/jan-kovar.jpg
 !fotky/jan-sprinar.jpg
 !fotky/jiri-janku.jpg
 !fotky/khk-logo.png
