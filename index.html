@@ -182,8 +182,19 @@ nav.scrolled{border-bottom-color:var(--line)}
 .knote{margin-top:16px;font-size:14px;color:var(--ink2);line-height:1.55}
 /* ── ANNOUNCED COURSE ── */
 .sec.announce{padding-top:8px;padding-bottom:clamp(40px,5vw,64px)}
-.kformat.wide .kbadge{margin-bottom:14px}
-.kformat.wide h3{font-size:clamp(21px,2.3vw,28px);line-height:1.15;text-wrap:balance}
+.kformat.wide,.kformat.wide:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.kformat.wide .kbadge{margin-bottom:14px;background:#fff;color:var(--accent)}
+.kformat.wide h3{font-size:clamp(21px,2.3vw,28px);line-height:1.15;text-wrap:balance;color:#fff}
+.kformat.wide .kteaser{color:rgba(255,255,255,.85)}
+.kformat.wide .kchev,.kformat.wide:hover .kchev{border-color:rgba(255,255,255,.55);color:#fff}
+.kformat.wide.open .kchev,.kformat.wide.open:hover .kchev{background:#fff;border-color:#fff;color:var(--accent)}
+.kformat.wide .kdivider{background:rgba(255,255,255,.25)}
+.kformat.wide .kprice{color:#fff}
+.kformat.wide .kprice small,.kformat.wide .klabel{color:rgba(255,255,255,.7)}
+.kformat.wide .kmeta li,.kformat.wide .klist li,.kformat.wide .knote{color:rgba(255,255,255,.9)}
+.kformat.wide .kmeta li::before,.kformat.wide .klist li::before{background:#fff}
+.kformat.wide .btn-primary{background:#fff;color:var(--accent)}
+.kformat.wide .btn-primary:hover{background:#eef0ff;box-shadow:0 14px 30px rgba(10,14,60,.25)}
 @media(hover:hover) and (pointer:fine){
   .kformat.wide:hover .kbody{grid-template-rows:0fr}
   .kformat.wide.open .kbody{grid-template-rows:1fr}
