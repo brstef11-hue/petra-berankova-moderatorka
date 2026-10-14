@@ -184,9 +184,10 @@ nav.scrolled{border-bottom-color:var(--line)}
 .sec.announce{padding-top:8px;padding-bottom:clamp(40px,5vw,64px)}
 .kformat.wide .kbadge{margin-bottom:14px}
 .kformat.wide h3{font-size:clamp(21px,2.3vw,28px);line-height:1.15;text-wrap:balance}
-.kfacts{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:16px;font-size:14px;font-weight:600;color:var(--ink)}
-.kfacts span{display:inline-flex;align-items:center;gap:8px}
-.kfacts span::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
+@media(hover:hover) and (pointer:fine){
+  .kformat.wide:hover .kbody{grid-template-rows:0fr}
+  .kformat.wide.open .kbody{grid-template-rows:1fr}
+}
 .kcols{display:grid;grid-template-columns:1fr 1.4fr;gap:32px}
 .klabel{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 .kformat.wide .btn{margin-top:22px}
@@ -308,7 +309,6 @@ footer{max-width:1200px;margin:0 auto;padding:30px 40px 40px;border-top:1px soli
         <span class="kchev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
       </div>
       <p class="kteaser">Praktický kurz sebevědomé komunikace a&nbsp;prezentace pro&nbsp;jednání s&nbsp;lidmi na&nbsp;vedoucích a&nbsp;rozhodovacích pozicích.</p>
-      <div class="kfacts"><span>pátek 20.&nbsp;11.&nbsp;2026</span><span>Pardubice</span><span>3&nbsp;500&nbsp;Kč</span></div>
     </button>
     <div class="kbody"><div class="kbody-inner"><div class="kbody-pad">
       <div class="kdivider"></div>
