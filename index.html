@@ -180,6 +180,16 @@ nav.scrolled{border-bottom-color:var(--line)}
 .kmeta li::before,.kformat .klist li::before{content:'';flex-shrink:0;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:7px}
 .kformat .klist li{font-size:14px;color:var(--ink2);display:flex;gap:10px;line-height:1.45}
 .knote{margin-top:16px;font-size:14px;color:var(--ink2);line-height:1.55}
+/* ── ANNOUNCED COURSE ── */
+.sec.announce{padding-top:8px;padding-bottom:clamp(40px,5vw,64px)}
+.kformat.wide .kbadge{margin-bottom:14px}
+.kformat.wide h3{font-size:clamp(21px,2.3vw,28px);line-height:1.15;text-wrap:balance}
+.kfacts{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:16px;font-size:14px;font-weight:600;color:var(--ink)}
+.kfacts span{display:inline-flex;align-items:center;gap:8px}
+.kfacts span::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.kcols{display:grid;grid-template-columns:1fr 1.4fr;gap:32px}
+.klabel{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.kformat.wide .btn{margin-top:22px}
 
 /* ── TESTIMONIALS ── */
 .testi{background:var(--paper)}
@@ -246,6 +256,7 @@ footer{max-width:1200px;margin:0 auto;padding:30px 40px 40px;border-top:1px soli
   .kurzy-grid::-webkit-scrollbar,.testi-grid::-webkit-scrollbar{display:none}
   .kformat,.testi-card{scroll-snap-align:start;flex:0 0 min(84%,360px)}
   .kurzy-grid .r,.testi-grid .r{opacity:1;transform:none;transition:none}
+  .kcols{grid-template-columns:1fr;gap:22px}
   .testi-arrow{display:none}
   .course-row{grid-template-columns:1fr;gap:8px}
   .course-meta{text-align:left}
@@ -286,6 +297,47 @@ footer{max-width:1200px;margin:0 auto;padding:30px 40px 40px;border-top:1px soli
     </div>
   </div>
 </header>
+
+<!-- ANNOUNCED COURSE -->
+<section class="sec announce" id="novy-kurz">
+  <div class="kformat featured wide r">
+    <button class="khead" aria-expanded="false">
+      <span class="kbadge">Otevírám kurz</span>
+      <div class="ktop">
+        <div class="ktop-left"><h3>Profesionální vystupování a&nbsp;prezentační dovednosti při&nbsp;jednání s&nbsp;významnými partnery</h3></div>
+        <span class="kchev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+      </div>
+      <p class="kteaser">Praktický kurz sebevědomé komunikace a&nbsp;prezentace pro&nbsp;jednání s&nbsp;lidmi na&nbsp;vedoucích a&nbsp;rozhodovacích pozicích.</p>
+      <div class="kfacts"><span>pátek 20.&nbsp;11.&nbsp;2026</span><span>Pardubice</span><span>3&nbsp;500&nbsp;Kč</span></div>
+    </button>
+    <div class="kbody"><div class="kbody-inner"><div class="kbody-pad">
+      <div class="kdivider"></div>
+      <div class="kcols">
+        <div>
+          <div class="kprice">3&nbsp;500&nbsp;Kč<small>za&nbsp;osobu</small></div>
+          <ul class="kmeta">
+            <li>pátek 20.&nbsp;listopadu 2026, dopoledne (2–3&nbsp;hodiny)</li>
+            <li>Pardubice</li>
+            <li>max. 15 účastníků</li>
+            <li>prezenčně, s&nbsp;praktickými ukázkami a&nbsp;nácvikem</li>
+          </ul>
+        </div>
+        <div>
+          <div class="klabel">Naučíte se</div>
+          <ul class="klist">
+            <li>vystupovat přirozeně a&nbsp;sebevědomě</li>
+            <li>stručně a&nbsp;přesvědčivě představit sebe, organizaci i&nbsp;projekt</li>
+            <li>zaujmout během prvních minut</li>
+            <li>pracovat s&nbsp;hlasem, tempem a&nbsp;gesty</li>
+            <li>zvládat trému a&nbsp;náročné otázky</li>
+          </ul>
+          <p class="knote"><strong>Pro&nbsp;koho:</strong> pro&nbsp;všechny, kdo pracovně jednají s&nbsp;vedením firem, obchodními partnery nebo veřejnou správou.</p>
+          <a href="mailto:petra.berankova@rozhlas.cz?subject=P%C5%99ihl%C3%A1%C5%A1ka%20na%20kurz%2020.%2011.%202026" class="btn btn-primary">Přihlásit se e-mailem</a>
+        </div>
+      </div>
+    </div></div></div>
+  </div>
+</section>
 
 <!-- ABOUT -->
 <section class="sec lav" id="o-mne">
