@@ -277,6 +277,16 @@ footer{max-width:1200px;margin:0 auto;padding:30px 40px 40px;border-top:1px soli
   .contact-panel{padding:28px 22px}
   footer{flex-direction:column;text-align:center}
 }
+
+/* ── CURSOR DOT ── */
+html.has-cursor-dot,html.has-cursor-dot *{cursor:none!important}
+.cursor-dot{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;opacity:0;transition:opacity .15s}
+.cursor-dot.visible{opacity:1}
+/* white ring keeps the dot visible on blue card and buttons */
+.cursor-dot i{display:block;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 2px #fff;transform:translate(-50%,-50%);transition:width .2s var(--ease),height .2s var(--ease),background .2s}
+.cursor-dot.on-link i{width:34px;height:34px;background:rgba(43,63,245,.35)}
+.cursor-dot.down i{width:10px;height:10px}
+@media(prefers-reduced-motion:reduce){.cursor-dot i{transition:none}}
 </style>
 </head>
 <body>
@@ -691,6 +701,30 @@ if(testiGrid&&testiPrev&&testiNext){
   testiGrid.addEventListener('scroll',updateTestiArrows,{passive:true});
   window.addEventListener('resize',updateTestiArrows);
   updateTestiArrows();
+}
+
+// blue dot instead of the mouse cursor; the native cursor stays until the first mouse move
+if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+  const root=document.documentElement;
+  const dot=document.createElement('div');
+  dot.className='cursor-dot';
+  dot.setAttribute('aria-hidden','true');
+  dot.innerHTML='<i></i>';
+  document.body.appendChild(dot);
+  window.addEventListener('pointermove',e=>{
+    if(e.pointerType!=='mouse'){
+      root.classList.remove('has-cursor-dot');
+      dot.classList.remove('visible');
+      return;
+    }
+    root.classList.add('has-cursor-dot');
+    dot.classList.add('visible');
+    dot.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;
+    dot.classList.toggle('on-link',!!(e.target.closest&&e.target.closest('a,button:not(:disabled)')));
+  },{passive:true});
+  window.addEventListener('pointerdown',()=>dot.classList.add('down'));
+  window.addEventListener('pointerup',()=>dot.classList.remove('down'));
+  root.addEventListener('mouseleave',()=>dot.classList.remove('visible'));
 }
 </script>
 </body>
